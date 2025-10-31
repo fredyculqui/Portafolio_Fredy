@@ -1,345 +1,111 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Fredy Culqui - Fotografía & Filmmaker</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fredy Culqui | Fotógrafo & Filmmaker</title>
 
-  <style>
-    body {
-      font-family: "Poppins", sans-serif;
-      margin: 0;
-      background-color: #fff;
-      color: #111;
-      scroll-behavior: smooth;
-    }
+  <!-- SEO -->
+  <meta name="description" content="Portafolio de Fredy Culqui, fotógrafo y filmmaker en Cajamarca, Perú. Especializado en retratos, videos musicales y proyectos visuales creativos.">
+  <meta name="keywords" content="fotografía, filmmaker, videos, retratos, portafolio, Cajamarca, Fredy Culqui">
+  <meta name="author" content="Fredy Culqui">
 
-    /* HEADER CON IMAGEN DE FONDO */
-    header {
-      position: relative;
-      color: white;
-      text-align: center;
-      padding: 3rem 1rem;
-      background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-                  url("imagenes/channels4_banner.jpg") center/cover no-repeat;
-      background-attachment: fixed;
-    }
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="imagenes/favicon.png">
 
-    header img {
-      width: 120px;
-      height: 120px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 3px solid white;
-      margin-top: 10px;
-      z-index: 2;
-      position: relative;
-    }
+  <!-- Estilos -->
+  <link rel="stylesheet" href="estilos.css">
 
-    nav {
-      background-color: #222;
-      text-align: center;
-      padding: 10px 0;
-      position: sticky;
-      top: 0;
-      z-index: 10;
-    }
+  <!-- Librería AOS (animaciones) -->
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 
-    nav a {
-      color: white;
-      text-decoration: none;
-      margin: 0 20px;
-      font-weight: bold;
-      transition: color 0.3s;
-    }
-
-    nav a:hover {
-      color: #aaa;
-    }
-
-    section {
-      padding: 2rem;
-      text-align: center;
-    }
-
-    /* GALERÍA */
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-      gap: 15px;
-      margin-top: 2rem;
-      justify-items: center;
-    }
-
-    .gallery img {
-      width: 100%;
-      height: auto;
-      max-height: 400px;
-      border-radius: 10px;
-      cursor: pointer;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      object-fit: contain;
-      background-color: #f2f2f2;
-    }
-
-    .gallery img:hover {
-      transform: scale(1.03);
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-    }
-
-    /* MODAL */
-    .modal {
-      display: none;
-      position: fixed;
-      z-index: 100;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0, 0, 0, 0.9);
-      justify-content: center;
-      align-items: center;
-    }
-
-    .modal img {
-      max-width: 90%;
-      max-height: 80%;
-      border-radius: 10px;
-    }
-
-    .close {
-      position: absolute;
-      top: 20px;
-      right: 30px;
-      color: white;
-      font-size: 35px;
-      font-weight: bold;
-      cursor: pointer;
-    }
-
-    /* FORMULARIO DE CONTACTO */
-    form {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      max-width: 400px;
-      margin: 0 auto;
-      gap: 10px;
-    }
-
-    form input, form textarea {
-      width: 100%;
-      padding: 10px;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-      font-size: 1rem;
-      font-family: "Poppins", sans-serif;
-    }
-
-    form button {
-      background-color: #111;
-      color: white;
-      border: none;
-      padding: 10px 20px;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: background 0.3s;
-    }
-
-    form button:hover {
-      background-color: #444;
-    }
-
-    /* REDES SOCIALES */
-    .redes {
-      display: flex;
-      justify-content: center;
-      gap: 30px;
-      margin-top: 30px;
-    }
-
-    .redes a {
-      text-decoration: none;
-      color: #111;
-      font-size: 30px;
-      transition: transform 0.3s, color 0.3s;
-    }
-
-    .redes a:hover {
-      transform: scale(1.2);
-    }
-
-    .redes a.instagram:hover {
-      color: #E1306C;
-    }
-
-    .redes a.tiktok:hover {
-      color: #000;
-      text-shadow: 2px 2px #ff0050, -2px -2px #00f2ea;
-    }
-
-    footer {
-      background-color: #111;
-      color: white;
-      text-align: center;
-      padding: 1rem 0;
-      margin-top: 2rem;
-    }
-
-    /* WHATSAPP BUTTON */
-    .whatsapp-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      background: #25D366;
-      color: white;
-      padding: 12px 20px;
-      border-radius: 10px;
-      text-decoration: none;
-      font-weight: bold;
-      transition: background 0.3s;
-      margin-top: 20px;
-    }
-
-    .whatsapp-btn:hover {
-      background: #1ebe5b;
-    }
-  </style>
-
-  <!-- ÍCONOS FONT AWESOME -->
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
-  />
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
+
 <body>
-  <header>
+  <!-- Botón modo oscuro -->
+  <button id="modoOscuroBtn">🌙</button>
+
+  <!-- ENCABEZADO -->
+  <header data-aos="fade-down">
     <h1>Fredy Culqui</h1>
     <p>Fotógrafo & Filmmaker</p>
-    <img
-      id="perfil"
-      src="imagenes/Imagen de WhatsApp 2025-10-30 a las 16.33.18_d7c6087d.jpg"
-      alt="Foto de perfil"
-    />
+    <nav>
+      <a href="#inicio">Inicio</a>
+      <a href="#galeria">Galería</a>
+      <a href="#sobre">Sobre mí</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
   </header>
 
-  <nav>
-    <a href="#inicio">Inicio</a>
-    <a href="#proyectos">Proyectos</a>
-    <a href="#galeria">Galería</a>
-    <a href="#contacto">Contacto</a>
-  </nav>
-
-  <section id="inicio">
-    <h2>Inicio</h2>
-    <p>
-      Bienvenido a mi portafolio visual. Aquí muestro mi trabajo en fotografía y video,
-      donde cada imagen cuenta una historia cinematográfica.
-    </p>
+  <!-- INICIO -->
+  <section id="inicio" class="inicio" data-aos="fade-up">
+    <img src="imagenes/portada.jpg" alt="Fredy Culqui" class="portada">
+    <h2>Capturando emociones, contando historias.</h2>
   </section>
 
-  <section id="proyectos">
-    <h2>Proyectos</h2>
-    <p>
-      Actualmente estoy trabajando en sesiones de retrato, videos musicales y proyectos
-      personales que fusionan la naturaleza y la emoción humana.
-    </p>
-  </section>
-
-  <section id="galeria">
+  <!-- GALERÍA -->
+  <section id="galeria" data-aos="fade-up">
     <h2>Galería</h2>
-    <div class="gallery">
-      <img src="imagenes/IMG_0828.JPG" alt="Foto 1" />
-      <img src="imagenes/IMG_1197.JPG" alt="Foto 2" />
-      <img src="imagenes/IMG_1198.JPG" alt="Foto 3" />
-      <img src="imagenes/IMG_1205.JPG" alt="Foto 4" />
-      <img src="imagenes/IMG_0113.JPG" alt="Foto 5" />
-      <img src="imagenes/IMG_0111.JPG" alt="Foto 6" />
-      <img src="imagenes/IMG_0103.JPG" alt="Foto 7" />
-      <img src="imagenes/IMG_0098.JPG" alt="Foto 8" />
-      <img src="imagenes/IMG_0159.JPG" alt="Foto 9" />
-      <img src="imagenes/IMG_0547.JPG" alt="Foto 10" />
+    <div class="galeria">
+      <img src="imagenes/foto1.jpg" alt="Proyecto 1">
+      <img src="imagenes/foto2.jpg" alt="Proyecto 2">
+      <img src="imagenes/foto3.jpg" alt="Proyecto 3">
+      <img src="imagenes/foto4.jpg" alt="Proyecto 4">
     </div>
   </section>
 
-  <section id="contacto">
-    <h2>Contacto</h2>
-    <p>📩 <strong>fredydiaze123@gmail.com</strong></p>
-    <p>📍 Cajamarca, Perú</p>
+  <!-- SOBRE MÍ -->
+  <section id="sobre" data-aos="fade-up">
+    <h2>Sobre mí</h2>
+    <p>
+      Soy un fotógrafo y filmmaker apasionado por capturar la esencia de las personas y los lugares.  
+      Cada imagen y cada plano que realizo busca transmitir emoción, historia y arte.  
+      Mi objetivo es crear experiencias visuales únicas que perduren en el tiempo.
+    </p>
+  </section>
 
-    <!-- FORMULARIO -->
+  <!-- TESTIMONIOS -->
+  <section id="testimonios" data-aos="fade-up">
+    <h2>Lo que dicen mis clientes</h2>
+    <blockquote>"Fredy logra que cada sesión sea mágica y profesional." – Ana López</blockquote>
+    <blockquote>"Su trabajo tiene una mirada cinematográfica impresionante." – Luis Torres</blockquote>
+  </section>
+
+  <!-- CONTACTO -->
+  <section id="contacto" data-aos="fade-up">
+    <h2>Contacto</h2>
+    <p>¿Tienes un proyecto en mente? Escríbeme o contáctame directamente por WhatsApp.</p>
+
     <form action="https://formspree.io/f/myzbnqwg" method="POST">
-      <input type="text" name="nombre" placeholder="Tu nombre" required />
-      <input type="email" name="email" placeholder="Tu correo" required />
-      <textarea name="mensaje" placeholder="Tu mensaje..." required></textarea>
-      <button type="submit">Enviar</button>
+      <input type="text" name="nombre" placeholder="Tu nombre" required>
+      <input type="email" name="correo" placeholder="Tu correo" required>
+      <input type="text" name="asunto" placeholder="Asunto (opcional)">
+      <textarea name="mensaje" placeholder="Escribe tu mensaje..." required></textarea>
+
+      <label>
+        <input type="checkbox" required> Acepto la política de privacidad
+      </label>
+
+      <button type="submit">Enviar mensaje</button>
     </form>
 
-    <!-- BOTÓN DE WHATSAPP -->
-    <a href="https://wa.link/t4iqyh" target="_blank" class="whatsapp-btn">
-      <i class="fab fa-whatsapp" style="font-size: 22px"></i> Enviar mensaje por WhatsApp
-    </a>
-
-    <div class="redes">
-      <a href="https://www.instagram.com/fredy_culqui/" target="_blank" class="instagram">
-        <i class="fab fa-instagram"></i>
-      </a>
-      <a href="https://www.tiktok.com/@fredy_culqui" target="_blank" class="tiktok">
-        <i class="fab fa-tiktok"></i>
-      </a>
-    </div>
+    <a href="https://wa.link/t4iqyh" target="_blank" class="whatsapp">💬 Enviar mensaje directo por WhatsApp</a>
   </section>
 
+  <!-- PIE DE PÁGINA -->
   <footer>
-    <p>© 2025 Fredy Culqui - Todos los derechos reservados</p>
+    <p>© 2025 Fredy Culqui | <a href="https://www.instagram.com/fredy_culqui" target="_blank">@fredy_culqui</a></p>
   </footer>
 
-  <!-- MODAL -->
-  <div id="myModal" class="modal">
-    <span class="close">&times;</span>
-    <img id="modalImg" src="" />
-  </div>
-
+  <!-- Scripts -->
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
   <script>
-    // GALERÍA MODAL
-    const modal = document.getElementById("myModal");
-    const modalImg = document.getElementById("modalImg");
-    const close = document.querySelector(".close");
-
-    document.querySelectorAll(".gallery img").forEach((img) => {
-      img.addEventListener("click", () => {
-        modal.style.display = "flex";
-        modalImg.src = img.src;
-      });
-    });
-
-    close.addEventListener("click", () => {
-      modal.style.display = "none";
-    });
-
-    modal.addEventListener("click", (e) => {
-      if (e.target === modal) {
-        modal.style.display = "none";
-      }
-    });
-
-    // FORMULARIO DE CONTACTO
-    const form = document.querySelector("form");
-    form.addEventListener("submit", async (e) => {
-      e.preventDefault();
-      const data = new FormData(form);
-      const res = await fetch(form.action, {
-        method: "POST",
-        body: data,
-        headers: { Accept: "application/json" },
-      });
-      if (res.ok) {
-        alert("✅ ¡Mensaje enviado correctamente! Gracias por contactarme.");
-        form.reset();
-      } else {
-        alert("❌ Hubo un error al enviar el mensaje. Intenta nuevamente.");
-      }
-    });
+    AOS.init();
+    const btn = document.getElementById('modoOscuroBtn');
+    btn.addEventListener('click', () => document.body.classList.toggle('oscuro'));
   </script>
 </body>
 </html>
+
