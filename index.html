@@ -1,42 +1,26 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Fredy Culqui - Fotografía & Filmmaker</title>
 
-  <!-- SEO -->
-  <meta name="description" content="Portafolio de Fredy Culqui, fotógrafo y filmmaker peruano especializado en retratos, videos musicales y proyectos visuales cinematográficos.">
-  <meta name="author" content="Fredy Culqui">
-  <meta name="keywords" content="fotografía, filmmaker, retratos, videos, Cajamarca, Perú, Fredy Culqui, portafolio, cine, video musical">
-  <link rel="icon" href="imagenes/logo.ico" type="image/x-icon">
-
-  <!-- FUENTES E ÍCONOS -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
   <style>
-    html { scroll-behavior: smooth; }
     body {
       font-family: "Poppins", sans-serif;
       margin: 0;
       background-color: #fff;
       color: #111;
-      opacity: 0;
-      animation: fadeIn 1s ease forwards;
+      scroll-behavior: smooth;
     }
 
-    @keyframes fadeIn {
-      to { opacity: 1; }
-    }
-
-    /* HEADER */
+    /* HEADER CON IMAGEN DE FONDO */
     header {
       position: relative;
       color: white;
       text-align: center;
       padding: 3rem 1rem;
-      background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+      background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
                   url("imagenes/channels4_banner.jpg") center/cover no-repeat;
       background-attachment: fixed;
     }
@@ -45,19 +29,20 @@
       width: 120px;
       height: 120px;
       border-radius: 50%;
+      object-fit: cover;
       border: 3px solid white;
       margin-top: 10px;
-      object-fit: cover;
+      z-index: 2;
+      position: relative;
     }
 
-    /* NAV */
     nav {
       background-color: #222;
       text-align: center;
       padding: 10px 0;
       position: sticky;
       top: 0;
-      z-index: 99;
+      z-index: 10;
     }
 
     nav a {
@@ -65,45 +50,16 @@
       text-decoration: none;
       margin: 0 20px;
       font-weight: bold;
-      transition: color 0.3s ease;
+      transition: color 0.3s;
     }
 
-    nav a:hover { color: #aaa; }
-
-    /* MODO OSCURO */
-    #modo {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background: #111;
-      color: white;
-      border: none;
-      border-radius: 50%;
-      width: 45px;
-      height: 45px;
-      cursor: pointer;
-      font-size: 20px;
-      transition: transform 0.3s ease;
-      z-index: 150;
+    nav a:hover {
+      color: #aaa;
     }
-    #modo:hover { transform: scale(1.1); }
-    .dark {
-      background-color: #111;
-      color: #eee;
-    }
-    .dark nav { background-color: #333; }
-    .dark footer { background-color: #000; }
 
     section {
       padding: 2rem;
       text-align: center;
-      opacity: 0;
-      transform: translateY(40px);
-      transition: opacity 0.8s ease, transform 0.8s ease;
-    }
-    section.visible {
-      opacity: 1;
-      transform: translateY(0);
     }
 
     /* GALERÍA */
@@ -122,13 +78,13 @@
       border-radius: 10px;
       cursor: pointer;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
-      background-color: #f2f2f2;
       object-fit: contain;
+      background-color: #f2f2f2;
     }
 
     .gallery img:hover {
       transform: scale(1.03);
-      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
     }
 
     /* MODAL */
@@ -140,7 +96,7 @@
       top: 0;
       width: 100%;
       height: 100%;
-      background-color: rgba(0,0,0,0.9);
+      background-color: rgba(0, 0, 0, 0.9);
       justify-content: center;
       align-items: center;
     }
@@ -149,12 +105,6 @@
       max-width: 90%;
       max-height: 80%;
       border-radius: 10px;
-      animation: zoomIn 0.3s ease;
-    }
-
-    @keyframes zoomIn {
-      from { transform: scale(0.8); opacity: 0; }
-      to { transform: scale(1); opacity: 1; }
     }
 
     .close {
@@ -167,53 +117,40 @@
       cursor: pointer;
     }
 
-    /* SERVICIOS */
-    .servicios {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-      margin-top: 20px;
-    }
-
-    .servicios .card {
-      background: #f2f2f2;
-      border-radius: 12px;
-      padding: 20px;
-      box-shadow: 0 3px 8px rgba(0,0,0,0.1);
-      transition: transform 0.3s ease;
-    }
-    .servicios .card:hover {
-      transform: translateY(-5px);
-    }
-
-    /* CONTACTO */
+    /* FORMULARIO DE CONTACTO */
     form {
-      max-width: 500px;
-      margin: 20px auto;
       display: flex;
       flex-direction: column;
+      align-items: center;
+      max-width: 400px;
+      margin: 0 auto;
       gap: 10px;
     }
-    input, textarea {
+
+    form input, form textarea {
+      width: 100%;
       padding: 10px;
       border: 1px solid #ccc;
       border-radius: 8px;
-      font-family: inherit;
-    }
-    button[type="submit"] {
-      background: #111;
-      color: white;
-      padding: 10px;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      font-weight: bold;
-      transition: background 0.3s ease;
-    }
-    button[type="submit"]:hover {
-      background: #444;
+      font-size: 1rem;
+      font-family: "Poppins", sans-serif;
     }
 
+    form button {
+      background-color: #111;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    form button:hover {
+      background-color: #444;
+    }
+
+    /* REDES SOCIALES */
     .redes {
       display: flex;
       justify-content: center;
@@ -228,8 +165,14 @@
       transition: transform 0.3s, color 0.3s;
     }
 
-    .redes a:hover { transform: scale(1.2); }
-    .redes a.instagram:hover { color: #E1306C; }
+    .redes a:hover {
+      transform: scale(1.2);
+    }
+
+    .redes a.instagram:hover {
+      color: #E1306C;
+    }
+
     .redes a.tiktok:hover {
       color: #000;
       text-shadow: 2px 2px #ff0050, -2px -2px #00f2ea;
@@ -243,67 +186,79 @@
       margin-top: 2rem;
     }
 
-    @media (max-width: 600px) {
-      header { padding: 2rem 1rem; }
-      header h1 { font-size: 1.8rem; }
-      nav a { margin: 0 10px; }
-      .gallery { grid-template-columns: 1fr 1fr; }
+    /* WHATSAPP BUTTON */
+    .whatsapp-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: #25D366;
+      color: white;
+      padding: 12px 20px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background 0.3s;
+      margin-top: 20px;
+    }
+
+    .whatsapp-btn:hover {
+      background: #1ebe5b;
     }
   </style>
-</head>
 
-<body oncontextmenu="return false;">
+  <!-- ÍCONOS FONT AWESOME -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+  />
+</head>
+<body>
   <header>
     <h1>Fredy Culqui</h1>
     <p>Fotógrafo & Filmmaker</p>
-    <img src="imagenes/Imagen de WhatsApp 2025-10-30 a las 16.33.18_d7c6087d.jpg" alt="Foto de perfil">
+    <img
+      id="perfil"
+      src="imagenes/Imagen de WhatsApp 2025-10-30 a las 16.33.18_d7c6087d.jpg"
+      alt="Foto de perfil"
+    />
   </header>
 
   <nav>
     <a href="#inicio">Inicio</a>
-    <a href="#sobre-mi">Sobre mí</a>
-    <a href="#servicios">Servicios</a>
+    <a href="#proyectos">Proyectos</a>
     <a href="#galeria">Galería</a>
     <a href="#contacto">Contacto</a>
   </nav>
 
   <section id="inicio">
     <h2>Inicio</h2>
-    <p>Bienvenido a mi portafolio visual. Aquí muestro mi trabajo en fotografía y video, donde cada imagen cuenta una historia cinematográfica.</p>
+    <p>
+      Bienvenido a mi portafolio visual. Aquí muestro mi trabajo en fotografía y video,
+      donde cada imagen cuenta una historia cinematográfica.
+    </p>
   </section>
 
-  <section id="sobre-mi">
-    <h2>Sobre mí</h2>
-    <p>Soy <strong>Fredy Culqui</strong>, fotógrafo y filmmaker peruano. Mi trabajo combina la emoción humana, la luz natural y el arte visual para capturar momentos que trascienden el tiempo.</p>
-  </section>
-
-  <section id="servicios">
-    <h2>Servicios</h2>
-    <div class="servicios">
-      <div class="card">
-        <h3>📸 Retratos</h3>
-        <p>Sesiones personales y profesionales con estilo cinematográfico, cuidando cada detalle de iluminación y expresión.</p>
-      </div>
-      <div class="card">
-        <h3>🎬 Videos Musicales</h3>
-        <p>Producción audiovisual completa, desde la planificación hasta la edición final, con enfoque artístico y narrativo.</p>
-      </div>
-      <div class="card">
-        <h3>🌿 Naturaleza y Paisaje</h3>
-        <p>Capturas visuales que conectan al espectador con la esencia del entorno y la atmósfera natural.</p>
-      </div>
-    </div>
+  <section id="proyectos">
+    <h2>Proyectos</h2>
+    <p>
+      Actualmente estoy trabajando en sesiones de retrato, videos musicales y proyectos
+      personales que fusionan la naturaleza y la emoción humana.
+    </p>
   </section>
 
   <section id="galeria">
     <h2>Galería</h2>
     <div class="gallery">
-      <img src="imagenes/IMG_0828.JPG" alt="Retrato 1" loading="lazy">
-      <img src="imagenes/IMG_1197.JPG" alt="Retrato 2" loading="lazy">
-      <img src="imagenes/IMG_1198.JPG" alt="Retrato 3" loading="lazy">
-      <img src="imagenes/IMG_1205.JPG" alt="Retrato 4" loading="lazy">
-      <img src="imagenes/IMG_0113.JPG" alt="Paisaje" loading="lazy">
-      <img src="imagenes/IMG_0111.JPG" alt="Retrato artístico" loading="lazy">
+      <img src="imagenes/IMG_0828.JPG" alt="Foto 1" />
+      <img src="imagenes/IMG_1197.JPG" alt="Foto 2" />
+      <img src="imagenes/IMG_1198.JPG" alt="Foto 3" />
+      <img src="imagenes/IMG_1205.JPG" alt="Foto 4" />
+      <img src="imagenes/IMG_0113.JPG" alt="Foto 5" />
+      <img src="imagenes/IMG_0111.JPG" alt="Foto 6" />
+      <img src="imagenes/IMG_0103.JPG" alt="Foto 7" />
+      <img src="imagenes/IMG_0098.JPG" alt="Foto 8" />
+      <img src="imagenes/IMG_0159.JPG" alt="Foto 9" />
+      <img src="imagenes/IMG_0547.JPG" alt="Foto 10" />
     </div>
   </section>
 
@@ -312,16 +267,26 @@
     <p>📩 <strong>fredydiaze123@gmail.com</strong></p>
     <p>📍 Cajamarca, Perú</p>
 
-    <form action="https://formspree.io/f/xxxxxx" method="POST">
-      <input type="text" name="nombre" placeholder="Tu nombre" required>
-      <input type="email" name="email" placeholder="Tu correo" required>
+    <!-- FORMULARIO -->
+    <form action="https://formspree.io/f/myzbnqwg" method="POST">
+      <input type="text" name="nombre" placeholder="Tu nombre" required />
+      <input type="email" name="email" placeholder="Tu correo" required />
       <textarea name="mensaje" placeholder="Tu mensaje..." required></textarea>
       <button type="submit">Enviar</button>
     </form>
 
+    <!-- BOTÓN DE WHATSAPP -->
+    <a href="https://wa.link/t4iqyh" target="_blank" class="whatsapp-btn">
+      <i class="fab fa-whatsapp" style="font-size: 22px"></i> Enviar mensaje por WhatsApp
+    </a>
+
     <div class="redes">
-      <a href="https://www.instagram.com/fredy_culqui/" target="_blank" class="instagram"><i class="fab fa-instagram"></i></a>
-      <a href="https://www.tiktok.com/@fredy_culqui" target="_blank" class="tiktok"><i class="fab fa-tiktok"></i></a>
+      <a href="https://www.instagram.com/fredy_culqui/" target="_blank" class="instagram">
+        <i class="fab fa-instagram"></i>
+      </a>
+      <a href="https://www.tiktok.com/@fredy_culqui" target="_blank" class="tiktok">
+        <i class="fab fa-tiktok"></i>
+      </a>
     </div>
   </section>
 
@@ -332,40 +297,48 @@
   <!-- MODAL -->
   <div id="myModal" class="modal">
     <span class="close">&times;</span>
-    <img id="modalImg" src="">
+    <img id="modalImg" src="" />
   </div>
 
-  <!-- BOTÓN MODO OSCURO -->
-  <button id="modo">🌙</button>
-
   <script>
-    // MODAL
-    const modal = document.getElementById('myModal');
-    const modalImg = document.getElementById('modalImg');
-    const close = document.querySelector('.close');
-    document.querySelectorAll('.gallery img').forEach(img => {
-      img.addEventListener('click', () => {
+    // GALERÍA MODAL
+    const modal = document.getElementById("myModal");
+    const modalImg = document.getElementById("modalImg");
+    const close = document.querySelector(".close");
+
+    document.querySelectorAll(".gallery img").forEach((img) => {
+      img.addEventListener("click", () => {
         modal.style.display = "flex";
         modalImg.src = img.src;
       });
     });
-    close.addEventListener('click', () => modal.style.display = "none");
-    modal.addEventListener('click', e => { if (e.target === modal) modal.style.display = "none"; });
 
-    // SCROLL ANIMATION
-    const sections = document.querySelectorAll('section');
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) entry.target.classList.add('visible');
-      });
+    close.addEventListener("click", () => {
+      modal.style.display = "none";
     });
-    sections.forEach(section => observer.observe(section));
 
-    // MODO OSCURO
-    const btn = document.getElementById("modo");
-    btn.addEventListener("click", () => {
-      document.body.classList.toggle("dark");
-      btn.textContent = document.body.classList.contains("dark") ? "☀️" : "🌙";
+    modal.addEventListener("click", (e) => {
+      if (e.target === modal) {
+        modal.style.display = "none";
+      }
+    });
+
+    // FORMULARIO DE CONTACTO
+    const form = document.querySelector("form");
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const data = new FormData(form);
+      const res = await fetch(form.action, {
+        method: "POST",
+        body: data,
+        headers: { Accept: "application/json" },
+      });
+      if (res.ok) {
+        alert("✅ ¡Mensaje enviado correctamente! Gracias por contactarme.");
+        form.reset();
+      } else {
+        alert("❌ Hubo un error al enviar el mensaje. Intenta nuevamente.");
+      }
     });
   </script>
 </body>
