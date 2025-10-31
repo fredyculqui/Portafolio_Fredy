@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Fredy Culqui - Fotografía & Filmmaker</title>
+  <title>Fredy Culqui - Fotógrafo & Filmmaker</title>
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <style>
@@ -23,65 +23,94 @@
       background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
                   url("imagenes/channels4_banner.jpg") center/cover no-repeat;
       background-attachment: fixed;
-      transition: all 0.5s ease;
+      transition: all 0.4s ease-in-out;
+      z-index: 1000;
     }
 
-    /* Header reducido (rectángulo) */
+    /* Header reducido */
     header.shrink {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
-      height: 65px;
+      height: 70px;
       padding: 0 2rem;
-      background-color: rgba(0, 0, 0, 0.92);
+      background-color: rgba(0, 0, 0, 0.95);
+      backdrop-filter: blur(6px);
       display: flex;
       align-items: center;
-      justify-content: space-between;
+      justify-content: flex-start;
+      gap: 15px;
       text-align: left;
-      z-index: 1000;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.4);
     }
 
-    /* Imagen de perfil */
+    /* Imagen */
     header img {
       width: 120px;
       height: 120px;
       border-radius: 50%;
       object-fit: cover;
       border: 3px solid white;
-      margin-top: 10px;
       transition: all 0.4s ease;
     }
 
     header.shrink img {
-      width: 45px;
-      height: 45px;
-      margin: 0;
+      width: 50px;
+      height: 50px;
       border: 2px solid white;
     }
 
-    /* Nombre */
+    /* Nombre y descripción */
+    .info {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.4s ease;
+    }
+
     header h1 {
       font-size: 2.5rem;
-      margin: 10px 0 0;
+      margin: 10px 0 5px;
       transition: all 0.4s ease;
-      animation: fadeInDown 1s ease;
+    }
+
+    header p {
+      font-size: 1rem;
+      margin: 0;
+      opacity: 0.9;
+      transition: all 0.4s ease;
     }
 
     header.shrink h1 {
-      font-size: 1.2rem;
+      font-size: 1.1rem;
       margin: 0;
-      flex: 1;
-      text-align: center;
     }
 
     header.shrink p {
-      display: none;
+      font-size: 0.7rem;
+      margin: 0;
     }
 
-    @keyframes fadeInDown {
-      from { opacity: 0; transform: translateY(-20px); }
-      to { opacity: 1; transform: translateY(0); }
+    /* Icono de menú */
+    .menu-icon {
+      display: none;
+      font-size: 28px;
+      color: white;
+      cursor: pointer;
+      margin-left: auto;
+      transition: transform 0.3s;
+    }
+
+    .menu-icon:hover {
+      transform: scale(1.1);
+    }
+
+    header.shrink .menu-icon {
+      display: block;
+      position: absolute;
+      right: 25px;
     }
 
     /* NAV */
@@ -101,19 +130,6 @@
 
     nav a:hover {
       color: #aaa;
-    }
-
-    /* MENU HAMBURGUESA */
-    .menu-icon {
-      display: none;
-      font-size: 28px;
-      color: white;
-      cursor: pointer;
-      transition: transform 0.3s;
-    }
-
-    .menu-icon:hover {
-      transform: scale(1.1);
     }
 
     @media (max-width: 768px) {
@@ -287,8 +303,10 @@
 <body>
   <header id="mainHeader">
     <img src="imagenes/Imagen de WhatsApp 2025-10-30 a las 16.33.18_d7c6087d.jpg" alt="Foto de perfil" />
-    <h1>Fredy Culqui</h1>
-    <p>Fotógrafo & Filmmaker</p>
+    <div class="info">
+      <h1>Fredy Culqui</h1>
+      <p>Fotógrafo & Filmmaker</p>
+    </div>
     <i class="fas fa-bars menu-icon" id="menuIcon"></i>
   </header>
 
@@ -372,18 +390,19 @@
     close.addEventListener('click', () => modal.style.display = "none");
     modal.addEventListener('click', e => { if (e.target === modal) modal.style.display = "none"; });
 
-    // Header shrink (con corrección del bug)
+    // Header sin parpadeo
     const header = document.getElementById('mainHeader');
-    let lastScroll = 0;
+    let isShrunk = false;
 
     window.addEventListener('scroll', () => {
-      const currentScroll = window.scrollY;
-      if (currentScroll > 120 && !header.classList.contains('shrink')) {
+      const scrollY = window.scrollY;
+      if (scrollY > 150 && !isShrunk) {
         header.classList.add('shrink');
-      } else if (currentScroll <= 80 && header.classList.contains('shrink')) {
+        isShrunk = true;
+      } else if (scrollY < 100 && isShrunk) {
         header.classList.remove('shrink');
+        isShrunk = false;
       }
-      lastScroll = currentScroll;
     });
 
     // Menú hamburguesa
