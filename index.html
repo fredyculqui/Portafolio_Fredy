@@ -3,67 +3,142 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Fredy Culqui | Fotógrafo & Filmmaker</title>
+  <title>Fredy Culqui - Fotografía & Filmmaker</title>
 
-  <!-- Íconos Font Awesome -->
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
-  />
-
-  <!-- Archivo de estilos -->
+  <!-- Fuente e iconos -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
   <!-- HEADER -->
-  <header>
+  <header id="main-header">
     <div class="header-content">
-      <div class="profile-info">
-        <img src="img/perfil.jpg" alt="Fredy Culqui" class="profile-pic" />
-        <div class="text-info">
+      <div class="profile-section">
+        <img src="imagenes/Imagen de WhatsApp 2025-10-30 a las 16.33.18_d7c6087d.jpg" alt="Fredy Culqui" class="profile-pic" />
+        <div class="name-title">
           <h1>Fredy Culqui</h1>
           <p>Fotógrafo & Filmmaker</p>
         </div>
       </div>
 
-      <div class="menu-icon">
+      <div class="menu-icon" id="menuToggle">
         <i class="fas fa-bars"></i>
       </div>
     </div>
+
+    <nav id="navMenu">
+      <a href="#inicio">Inicio</a>
+      <a href="#proyectos">Proyectos</a>
+      <a href="#galeria">Galería</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
   </header>
 
-  <!-- CONTENIDO PRINCIPAL -->
-  <main>
-    <section class="hero">
-      <img src="img/fondo.jpg" alt="Fotografía de fondo" />
-    </section>
+  <!-- SECCIONES -->
+  <section id="inicio">
+    <h2>Inicio</h2>
+    <p>Bienvenido a mi portafolio visual. Aquí muestro mi trabajo en fotografía y video, donde cada imagen cuenta una historia cinematográfica.</p>
+  </section>
 
-    <section class="contenido">
-      <h2>Bienvenido a mi portafolio</h2>
-      <p>
-        Aquí podrás conocer mis proyectos de fotografía y filmación
-        profesional.
-      </p>
-      <p>
-        Desplázate hacia abajo para ver más contenido y observar el efecto del
-        encabezado.
-      </p>
-      <div style="height: 1800px"></div>
-    </section>
-  </main>
+  <section id="proyectos">
+    <h2>Proyectos</h2>
+    <p>Actualmente estoy trabajando en sesiones de retrato, videos musicales y proyectos personales que fusionan la naturaleza y la emoción humana.</p>
+  </section>
 
-  <!-- SCRIPT PARA EL EFECTO DE SCROLL -->
+  <section id="galeria">
+    <h2>Galería</h2>
+    <div class="gallery">
+      <img src="imagenes/IMG_0828.JPG" alt="Foto 1">
+      <img src="imagenes/IMG_1197.JPG" alt="Foto 2">
+      <img src="imagenes/IMG_1198.JPG" alt="Foto 3">
+      <img src="imagenes/IMG_1205.JPG" alt="Foto 4">
+      <img src="imagenes/IMG_0113.JPG" alt="Foto 5">
+      <img src="imagenes/IMG_0111.JPG" alt="Foto 6">
+      <img src="imagenes/IMG_0103.JPG" alt="Foto 7">
+      <img src="imagenes/IMG_0098.JPG" alt="Foto 8">
+      <img src="imagenes/IMG_0159.JPG" alt="Foto 9">
+      <img src="imagenes/IMG_0547.JPG" alt="Foto 10">
+    </div>
+  </section>
+
+  <section id="contacto">
+    <h2>Contacto</h2>
+    <p>📩 fredydiaze123@gmail.com</p>
+    <p>📍 Cajamarca, Perú</p>
+
+    <!-- FORMULARIO -->
+    <form action="https://formspree.io/f/myzbnqwg" method="POST" class="contact-form">
+      <input type="text" name="name" placeholder="Tu nombre" required>
+      <input type="email" name="email" placeholder="Tu correo" required>
+      <textarea name="message" placeholder="Escribe tu mensaje aquí..." required></textarea>
+      <button type="submit">Enviar Mensaje</button>
+    </form>
+
+    <!-- BOTÓN DE WHATSAPP -->
+    <div class="whatsapp-btn">
+      <a href="https://wa.link/t4iqyh" target="_blank">
+        <i class="fab fa-whatsapp"></i> Enviar mensaje directo
+      </a>
+    </div>
+
+    <!-- REDES -->
+    <div class="redes">
+      <a href="https://www.instagram.com/fredy_culqui/" target="_blank" class="instagram">
+        <i class="fab fa-instagram"></i>
+      </a>
+      <a href="https://www.tiktok.com/@fredy_culqui" target="_blank" class="tiktok">
+        <i class="fab fa-tiktok"></i>
+      </a>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2025 Fredy Culqui - Todos los derechos reservados</p>
+  </footer>
+
+  <!-- MODAL DE IMAGEN -->
+  <div id="myModal" class="modal">
+    <span class="close">&times;</span>
+    <img id="modalImg" src="">
+  </div>
+
   <script>
-    const header = document.querySelector("header");
+    // Modal de galería
+    const modal = document.getElementById('myModal');
+    const modalImg = document.getElementById('modalImg');
+    const close = document.querySelector('.close');
+
+    document.querySelectorAll('.gallery img').forEach(img => {
+      img.addEventListener('click', () => {
+        modal.style.display = "flex";
+        modalImg.src = img.src;
+      });
+    });
+
+    close.addEventListener('click', () => {
+      modal.style.display = "none";
+    });
+
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) modal.style.display = "none";
+    });
+
+    // Menú hamburguesa
+    const menuToggle = document.getElementById('menuToggle');
+    const navMenu = document.getElementById('navMenu');
+
+    menuToggle.addEventListener('click', () => {
+      navMenu.classList.toggle('show');
+    });
+
+    // Efecto scroll header
+    const header = document.getElementById('main-header');
     let lastScrollY = 0;
 
-    window.addEventListener("scroll", () => {
-      if (window.scrollY > 100 && window.scrollY > lastScrollY) {
-        header.classList.add("scrolled");
-      } else if (window.scrollY < 100) {
-        header.classList.remove("scrolled");
-      }
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 60) header.classList.add('scrolled');
+      else header.classList.remove('scrolled');
       lastScrollY = window.scrollY;
     });
   </script>
