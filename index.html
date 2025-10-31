@@ -1,28 +1,32 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Fredy Culqui | Fotógrafo & Filmmaker</title>
 
-  <!-- Font Awesome (icono de menú) -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <!-- Íconos Font Awesome -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+  />
 
-  <!-- Archivo CSS -->
-  <link rel="stylesheet" href="style.css">
+  <!-- Archivo de estilos -->
+  <link rel="stylesheet" href="style.css" />
 </head>
-<body>
 
+<body>
   <!-- HEADER -->
   <header>
     <div class="header-content">
       <div class="profile-info">
-        <img src="img/perfil.jpg" alt="Fredy Culqui" class="profile-pic">
+        <img src="img/perfil.jpg" alt="Fredy Culqui" class="profile-pic" />
         <div class="text-info">
           <h1>Fredy Culqui</h1>
           <p>Fotógrafo & Filmmaker</p>
         </div>
       </div>
+
       <div class="menu-icon">
         <i class="fas fa-bars"></i>
       </div>
@@ -30,29 +34,38 @@
   </header>
 
   <!-- CONTENIDO PRINCIPAL -->
-  <section class="main-content">
-    <div class="hero">
-      <img src="img/fondo.jpg" alt="Fondo principal">
-    </div>
+  <main>
+    <section class="hero">
+      <img src="img/fondo.jpg" alt="Fotografía de fondo" />
+    </section>
 
-    <div class="contenido">
+    <section class="contenido">
       <h2>Bienvenido a mi portafolio</h2>
-      <p>Aquí podrás conocer mis proyectos de fotografía y filmación profesional.</p>
-      <p>Desplázate para ver más contenido y probar el efecto del encabezado.</p>
-      <div style="height: 1800px;"></div> <!-- espacio de prueba -->
-    </div>
-  </section>
+      <p>
+        Aquí podrás conocer mis proyectos de fotografía y filmación
+        profesional.
+      </p>
+      <p>
+        Desplázate hacia abajo para ver más contenido y observar el efecto del
+        encabezado.
+      </p>
+      <div style="height: 1800px"></div>
+    </section>
+  </main>
 
-  <!-- SCRIPT -->
+  <!-- SCRIPT PARA EL EFECTO DE SCROLL -->
   <script>
-  window.addEventListener("scroll", () => {
     const header = document.querySelector("header");
-    if (window.scrollY > 80) {
-      header.classList.add("scrolled");
-    } else {
-      header.classList.remove("scrolled");
-    }
-  });
+    let lastScrollY = 0;
+
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 100 && window.scrollY > lastScrollY) {
+        header.classList.add("scrolled");
+      } else if (window.scrollY < 100) {
+        header.classList.remove("scrolled");
+      }
+      lastScrollY = window.scrollY;
+    });
   </script>
 </body>
 </html>
