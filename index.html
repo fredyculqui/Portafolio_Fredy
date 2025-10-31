@@ -26,20 +26,23 @@
       transition: all 0.5s ease;
     }
 
+    /* Header reducido (rectángulo) */
     header.shrink {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
-      padding: 0.5rem 2rem;
-      background-color: rgba(0, 0, 0, 0.9);
+      height: 65px;
+      padding: 0 2rem;
+      background-color: rgba(0, 0, 0, 0.92);
       display: flex;
       align-items: center;
       justify-content: space-between;
-      z-index: 1000;
       text-align: left;
+      z-index: 1000;
     }
 
+    /* Imagen de perfil */
     header img {
       width: 120px;
       height: 120px;
@@ -51,22 +54,29 @@
     }
 
     header.shrink img {
-      width: 50px;
-      height: 50px;
+      width: 45px;
+      height: 45px;
       margin: 0;
       border: 2px solid white;
     }
 
+    /* Nombre */
     header h1 {
       font-size: 2.5rem;
       margin: 10px 0 0;
-      transition: font-size 0.4s ease;
+      transition: all 0.4s ease;
       animation: fadeInDown 1s ease;
     }
 
     header.shrink h1 {
       font-size: 1.2rem;
-      margin-left: 10px;
+      margin: 0;
+      flex: 1;
+      text-align: center;
+    }
+
+    header.shrink p {
+      display: none;
     }
 
     @keyframes fadeInDown {
@@ -99,6 +109,11 @@
       font-size: 28px;
       color: white;
       cursor: pointer;
+      transition: transform 0.3s;
+    }
+
+    .menu-icon:hover {
+      transform: scale(1.1);
     }
 
     @media (max-width: 768px) {
@@ -265,116 +280,3 @@
       text-align: center;
       padding: 1rem 0;
       margin-top: 2rem;
-    }
-  </style>
-</head>
-
-<body>
-  <header id="mainHeader">
-    <div class="header-content">
-      <h1>Fredy Culqui</h1>
-      <p>Fotógrafo & Filmmaker</p>
-      <img src="imagenes/Imagen de WhatsApp 2025-10-30 a las 16.33.18_d7c6087d.jpg" alt="Foto de perfil" />
-    </div>
-    <i class="fas fa-bars menu-icon" id="menuIcon"></i>
-  </header>
-
-  <nav id="mainNav">
-    <a href="#inicio">Inicio</a>
-    <a href="#proyectos">Proyectos</a>
-    <a href="#galeria">Galería</a>
-    <a href="#contacto">Contacto</a>
-  </nav>
-
-  <section id="inicio">
-    <h2>Inicio</h2>
-    <p>Bienvenido a mi portafolio visual. Aquí muestro mi trabajo en fotografía y video, donde cada imagen cuenta una historia cinematográfica.</p>
-  </section>
-
-  <section id="proyectos">
-    <h2>Proyectos</h2>
-    <p>Actualmente estoy trabajando en sesiones de retrato, videos musicales y proyectos personales que fusionan la naturaleza y la emoción humana.</p>
-  </section>
-
-  <section id="galeria">
-    <h2>Galería</h2>
-    <div class="gallery">
-      <img src="imagenes/IMG_0828.JPG" alt="Foto 1">
-      <img src="imagenes/IMG_1197.JPG" alt="Foto 2">
-      <img src="imagenes/IMG_1198.JPG" alt="Foto 3">
-      <img src="imagenes/IMG_1205.JPG" alt="Foto 4">
-      <img src="imagenes/IMG_0113.JPG" alt="Foto 5">
-      <img src="imagenes/IMG_0111.JPG" alt="Foto 6">
-      <img src="imagenes/IMG_0103.JPG" alt="Foto 7">
-      <img src="imagenes/IMG_0098.JPG" alt="Foto 8">
-      <img src="imagenes/IMG_0159.JPG" alt="Foto 9">
-      <img src="imagenes/IMG_0547.JPG" alt="Foto 10">
-    </div>
-  </section>
-
-  <section id="contacto">
-    <h2>Contacto</h2>
-    <form action="https://formspree.io/f/myzbnqwg" method="POST">
-      <label>Nombre:</label>
-      <input type="text" name="nombre" required>
-      <label>Email:</label>
-      <input type="email" name="email" required>
-      <label>Mensaje:</label>
-      <textarea name="mensaje" rows="5" required></textarea>
-      <button type="submit">Enviar</button>
-    </form>
-
-    <p>📍 Cajamarca, Perú</p>
-    <div class="redes">
-      <a href="https://www.instagram.com/fredy_culqui/" target="_blank" class="instagram"><i class="fab fa-instagram"></i></a>
-      <a href="https://www.tiktok.com/@fredy_culqui" target="_blank" class="tiktok"><i class="fab fa-tiktok"></i></a>
-    </div>
-  </section>
-
-  <footer>
-    <p>© 2025 Fredy Culqui - Todos los derechos reservados</p>
-  </footer>
-
-  <a href="https://wa.link/t4iqyh" target="_blank" class="whatsapp-float">
-    <i class="fab fa-whatsapp"></i>
-  </a>
-
-  <!-- MODAL -->
-  <div id="myModal" class="modal">
-    <span class="close">&times;</span>
-    <img id="modalImg" src="">
-  </div>
-
-  <script>
-    // Galería Modal
-    const modal = document.getElementById('myModal');
-    const modalImg = document.getElementById('modalImg');
-    const close = document.querySelector('.close');
-    document.querySelectorAll('.gallery img').forEach(img => {
-      img.addEventListener('click', () => {
-        modal.style.display = "flex";
-        modalImg.src = img.src;
-      });
-    });
-    close.addEventListener('click', () => modal.style.display = "none");
-    modal.addEventListener('click', e => { if (e.target === modal) modal.style.display = "none"; });
-
-    // Header shrink al hacer scroll
-    const header = document.getElementById('mainHeader');
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 100) {
-        header.classList.add('shrink');
-      } else {
-        header.classList.remove('shrink');
-      }
-    });
-
-    // Menú hamburguesa
-    const menuIcon = document.getElementById('menuIcon');
-    const nav = document.getElementById('mainNav');
-    menuIcon.addEventListener('click', () => {
-      nav.classList.toggle('active');
-    });
-  </script>
-</body>
-</html>
