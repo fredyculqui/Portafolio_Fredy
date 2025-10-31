@@ -5,7 +5,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Fredy Culqui - Fotografía & Filmmaker</title>
 
+  <!-- META DESCRIPTION PARA SEO -->
+  <meta name="description" content="Portafolio de Fredy Culqui, fotógrafo y filmmaker peruano especializado en retratos, videos musicales y proyectos visuales cinematográficos.">
+
+  <!-- FAVICON -->
+  <link rel="icon" href="imagenes/logo.ico" type="image/x-icon">
+
+  <!-- FUENTE -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <!-- ÍCONOS FONT AWESOME -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
   <style>
+    /* BASE */
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       font-family: "Poppins", sans-serif;
       margin: 0;
@@ -35,10 +52,14 @@
       position: relative;
     }
 
+    /* NAV PEGAJOSO */
     nav {
       background-color: #222;
       text-align: center;
       padding: 10px 0;
+      position: sticky;
+      top: 0;
+      z-index: 99;
     }
 
     nav a {
@@ -46,6 +67,7 @@
       text-decoration: none;
       margin: 0 20px;
       font-weight: bold;
+      transition: color 0.3s ease;
     }
 
     nav a:hover {
@@ -100,6 +122,12 @@
       max-width: 90%;
       max-height: 80%;
       border-radius: 10px;
+      animation: zoomIn 0.3s ease;
+    }
+
+    @keyframes zoomIn {
+      from { transform: scale(0.8); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
     }
 
     .close {
@@ -147,11 +175,25 @@
       padding: 1rem 0;
       margin-top: 2rem;
     }
-  </style>
 
-  <!-- ÍCONOS FONT AWESOME -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    /* RESPONSIVE */
+    @media (max-width: 600px) {
+      header {
+        padding: 2rem 1rem;
+      }
+      header h1 {
+        font-size: 1.8rem;
+      }
+      nav a {
+        margin: 0 10px;
+      }
+      .gallery {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+  </style>
 </head>
+
 <body>
   <header>
     <h1>Fredy Culqui</h1>
@@ -180,16 +222,16 @@
     <h2>Galería</h2>
 
     <div class="gallery">
-      <img src="imagenes/IMG_0828.JPG" alt="Foto 1">
-      <img src="imagenes/IMG_1197.JPG" alt="Foto 2">
-      <img src="imagenes/IMG_1198.JPG" alt="Foto 3">
-      <img src="imagenes/IMG_1205.JPG" alt="Foto 4">
-      <img src="imagenes/IMG_0113.JPG" alt="Foto 5">
-      <img src="imagenes/IMG_0111.JPG" alt="Foto 6">
-      <img src="imagenes/IMG_0103.JPG" alt="Foto 7">
-      <img src="imagenes/IMG_0098.JPG" alt="Foto 8">
-      <img src="imagenes/IMG_0159.JPG" alt="Foto 9">
-      <img src="imagenes/IMG_0547.JPG" alt="Foto 10">
+      <img src="imagenes/IMG_0828.JPG" alt="Foto 1" loading="lazy">
+      <img src="imagenes/IMG_1197.JPG" alt="Foto 2" loading="lazy">
+      <img src="imagenes/IMG_1198.JPG" alt="Foto 3" loading="lazy">
+      <img src="imagenes/IMG_1205.JPG" alt="Foto 4" loading="lazy">
+      <img src="imagenes/IMG_0113.JPG" alt="Foto 5" loading="lazy">
+      <img src="imagenes/IMG_0111.JPG" alt="Foto 6" loading="lazy">
+      <img src="imagenes/IMG_0103.JPG" alt="Foto 7" loading="lazy">
+      <img src="imagenes/IMG_0098.JPG" alt="Foto 8" loading="lazy">
+      <img src="imagenes/IMG_0159.JPG" alt="Foto 9" loading="lazy">
+      <img src="imagenes/IMG_0547.JPG" alt="Foto 10" loading="lazy">
     </div>
   </section>
 
